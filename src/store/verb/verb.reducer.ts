@@ -5,7 +5,14 @@ import * as ACTIONS from './verb.actions-consts';
 const initialState: StateVerb = {
   isLoading: false,
   verb: '',
-  verbs: []
+  verbs: {
+    affirmative: {
+      statement: []
+    },
+    interrogative: {
+      statement: []
+    }
+  }
 };
 
 export default (state = initialState, action: any) => {

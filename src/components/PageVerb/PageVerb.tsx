@@ -28,10 +28,28 @@ export const Page = () => {
     <div className="page">
       <Input {...inputData} />
       <Button {...buttonData}>Показать</Button>
-      {verbs.length &&
-        verbs.map((verb, i) => {
-          return <div key={`verb_${i}`}>{verb}</div>;
-        })}
+      {Object.entries(verbs).map(([key, value], i) => {
+        return (
+          <div key={`verb1_${i}`}>
+            <div className="title">{key}</div>
+            <div>
+              {Object.entries(value).map(([type, verbs], i) => {
+                return (
+                  <div key={`verb2_${i}`}>
+                    <div>{type}</div>
+                    <div className="title">
+                      {verbs &&
+                        verbs.map((verb, i) => {
+                          return <div key={`verb3_${i}`}>{verb}</div>;
+                        })}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 };

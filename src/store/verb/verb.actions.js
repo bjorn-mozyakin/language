@@ -11,7 +11,7 @@ export const updateVerb = (verb) => {
 export const showVerbForms = (verb) => {
   const root = verb.slice(0, -3);
 
-  const verbs = getVerbs(root, getVowel(root), getAffix());
+  const verbs = getVerbs(root);
 
   return {
     type: ACTIONS.SHOW_VERB_FORMS,

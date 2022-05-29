@@ -38,8 +38,24 @@ export const getVowel = (root: string, harmonyType = HarmonyType.VowelsFour) => 
   return vowel && vowel[0];
 };
 
-export const getVerbs = (root: string, vowel: string, affix: string) => {
-  return Object.entries(endingsPresent).map(([pronoun, ending]) => {
-    return `${pronoun} ${root + vowel + affix + ending}`;
-  });
+export const getVerbs = (root: string) => {
+  const vowel = getVowel(root);
+  const affirmativeStatementAffix = vowel;
+  const negativeStatementAffix = 'm' + vowel;
+  const tenseAffix = getAffix();
+
+  const verbs = {
+    affirmative: {
+      statement: Object.entries(endingsPresent).map(([pronoun, ending]) => {
+        return `${pronoun} ${root + affirmativeStatementAffix + tenseAffix + ending}`;
+      })
+    },
+    negative: {
+      statement: Object.entries(endingsPresent).map(([pronoun, ending]) => {
+        return `${pronoun} ${root + negativeStatementAffix + tenseAffix + ending}`;
+      })
+    }
+  };
+
+  return verbs;
 };
