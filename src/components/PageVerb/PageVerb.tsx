@@ -7,6 +7,7 @@ import { StateVerb } from '../../entities/State';
 
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
+import Title from '../../components/Title/Title';
 
 export const Page = () => {
   const dispatch = useDispatch();
@@ -31,13 +32,13 @@ export const Page = () => {
       {Object.entries(verbs).map(([key, value], i) => {
         return (
           <div key={`verb1_${i}`}>
-            <div className="title">{key}</div>
+            <Title>{key}</Title>
             <div>
               {Object.entries(value).map(([type, verbs], i) => {
                 return (
                   <div key={`verb2_${i}`}>
-                    <div>{type}</div>
-                    <div className="title">
+                    <Title>{type}</Title>
+                    <div>
                       {verbs &&
                         verbs.map((verb, i) => {
                           return <div key={`verb3_${i}`}>{verb}</div>;
