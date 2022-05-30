@@ -7,10 +7,12 @@ const initialState: StateVerb = {
   verb: '',
   verbs: {
     affirmative: {
-      statement: []
+      statement: [],
+      interrogative: []
     },
     interrogative: {
-      statement: []
+      statement: [],
+      interrogative: []
     }
   }
 };

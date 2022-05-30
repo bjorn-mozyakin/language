@@ -1,6 +1,7 @@
 import { HarmonyType } from '../entities/Rules';
 
-import endingsPresent from '../rules/tenseEnds/present';
+import presentContinuousInterrogativeWord from '../rules/tenseEnds/present';
+import endingsPresentQuestion from '../rules/tenseEnds/present_question';
 import vowelHarmonyFour from '../rules/vowelHarmonyFour';
 import vowelHarmonyTwo from '../rules/vowelHarmonyTwo';
 import vowels from '../rules/vowels';
@@ -48,11 +49,17 @@ export const getVerbs = (root: string) => {
     affirmative: {
       statement: Object.entries(endingsPresent).map(([pronoun, ending]) => {
         return `${pronoun} ${root + affirmativeStatementAffix + tenseAffix + ending}`;
+      }),
+      interrogative: Object.entries(endingsPresentQuestion).map(([pronoun, word]) => {
+        return `${pronoun} ${root + affirmativeStatementAffix + tenseAffix} ${word}`;
       })
     },
     negative: {
       statement: Object.entries(endingsPresent).map(([pronoun, ending]) => {
         return `${pronoun} ${root + negativeStatementAffix + tenseAffix + ending}`;
+      }),
+      interrogative: Object.entries(endingsPresentQuestion).map(([pronoun, word]) => {
+        return `${pronoun} ${root + negativeStatementAffix + tenseAffix} ${word}`;
       })
     }
   };

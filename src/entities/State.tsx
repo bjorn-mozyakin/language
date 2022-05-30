@@ -7,9 +7,11 @@ export type State = {
 export type Verbs = {
   affirmative: {
     statement: string[];
+    interrogative: string[];
   };
   interrogative?: {
     statement: string[];
+    interrogative: string[];
   };
 };
 
