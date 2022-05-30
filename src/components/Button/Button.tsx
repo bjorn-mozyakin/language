@@ -1,3 +1,5 @@
+import './Button.scss';
+
 import React from 'react';
 
 import { ButtonType, BtnType } from '../../entities/Button';
@@ -13,7 +15,9 @@ export const Button = ({
   isLoading = false,
   onClick
 }: BtnType) => {
-  const classNames = [isLoading ? 'btn-flat_loading' : ''].concat(additionalClasses).join(' ');
+  const classNames = ['button', isLoading ? 'btn-flat_loading' : '']
+    .concat(additionalClasses)
+    .join(' ');
 
   let attrs;
   if (dataAttributes) {

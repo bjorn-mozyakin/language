@@ -1,0 +1,15 @@
+@import '../../scss/vars.scss';
+
+.syllable {
+  &_black: {
+    color: $cBlack;
+  }
+
+  &_green: {
+    color: $cGreen;
+  }
+
+  &_orange: {
+    color: $cOrange;
+  }
+}

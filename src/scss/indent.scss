@@ -1,0 +1,20 @@
+@import './vars.scss';
+
+$outdents:
+  24 $p24,
+  28 $p28,
+  32 $p32;
+
+$directions: 'top', 'right', 'bottom', 'left';
+
+@each $name, $outdent in $outdents {
+  @each $direction in $directions {
+    .outdent-#{$direction}-#{$name} {
+      margin-#{$direction}: $outdent;
+    }
+
+    .indent-#{$direction}-#{$name} {
+      padding-#{$direction}: $outdent;
+    }
+  }
+}

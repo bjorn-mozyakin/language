@@ -1,6 +1,6 @@
 import { HarmonyType } from '../entities/Rules';
 
-import presentContinuousInterrogativeWord from '../rules/tenseEnds/present';
+import endingsPresent from '../rules/tenseEnds/present';
 import endingsPresentQuestion from '../rules/tenseEnds/present_question';
 import vowelHarmonyFour from '../rules/vowelHarmonyFour';
 import vowelHarmonyTwo from '../rules/vowelHarmonyTwo';

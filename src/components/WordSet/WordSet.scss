@@ -1,0 +1,8 @@
+@import '../../scss/vars';
+
+.word-set {
+  &__words {
+    margin-top: $p8;
+    text-align: left;
+  }
+}

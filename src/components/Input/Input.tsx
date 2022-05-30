@@ -1,3 +1,5 @@
+import './Input.scss';
+
 import React from 'react';
 
 import { InputState, InputType } from '../../entities/Input';

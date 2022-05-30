@@ -1,9 +1,9 @@
 @import '../../scss/vars';
 
-.button {
+.input-area__input {
   box-sizing: border-box;
   height: 40px;
+  padding: 0 $p8;
   border-radius: 6px;
   border: 1px solid $cBlack;
-  cursor: pointer
 }
