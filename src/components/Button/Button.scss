@@ -1,9 +1,8 @@
 @import '../../scss/vars';
 
 .button {
-  box-sizing: border-box;
   height: 40px;
   border-radius: 6px;
   border: 1px solid $cBlack;
-  cursor: pointer
+  cursor: pointer;
 }
