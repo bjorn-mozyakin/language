@@ -1,44 +1,39 @@
 import './Input.scss';
 
 import React from 'react';
-import { useDispatch } from 'react-redux';
 
 import { InputState, InputType } from '../../entities/Input';
 
 const Input = ({
+  additionalClasses = [],
+  autocomplete = '',
+  autoFocus = false,
+  hint = '',
+  maxlength,
   name,
+  pattern = '',
+  placeholder = '',
+  required = false,
   type = InputType.TEXT,
   value = '',
-  placeholder = '',
-  autocomplete = '',
-  required = false,
   withError = false,
-  additionalClasses = [],
-  autoFocus = false,
-  maxLength,
-  min,
-  max,
-  hint = '',
   onChange
 }: InputState) => {
-  const dispatch = useDispatch();
-
   const classNames = ['input-area__input'].concat(additionalClasses).join(' ');
 
   return (
     <div className="input-area">
       <input
         className={classNames}
+        autoComplete={autocomplete}
+        autoFocus={autoFocus}
+        maxLength={maxlength}
         name={name}
+        {...pattern || ''}
+        placeholder={placeholder}
+        required={required}
         type={type}
         value={value}
-        placeholder={placeholder}
-        autoComplete={autocomplete}
-        required={required}
-        autoFocus={autoFocus}
-        maxLength={maxLength}
-        min={min}
-        max={max}
         onChange={
           onChange &&
           ((event) => {

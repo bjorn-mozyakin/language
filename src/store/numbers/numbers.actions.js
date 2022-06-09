@@ -2,24 +2,6 @@ import { _0_9, _10_90, _100_1000 } from '../../rules/numbers/numbers';
 import { randomInteger } from '../../utils/numbers';
 import * as ACTIONS from './numbers.actions-consts';
 
-export const updateSettings = ({ amount, maxNum, minNum }) => {
-  return {
-    type: ACTIONS.UPDATE_SETTINGS,
-    amount,
-    maxNum,
-    minNum
-  };
-};
-
-export const startGame = ({ amount, maxNum, minNum }) => {
-  updateSettings({ amount, maxNum, minNum });
-
-  return {
-    type: ACTIONS.START_GAME,
-    allNumbers: getAllNumbers({ maxNum, minNum }),
-    gameNumbers: getGameNumbers({ amount, maxNum, minNum })
-  };
-};
 
 export const getAllNumbers = ({ maxNum, minNum }) => {
   const allNumbers = {};
@@ -63,30 +45,49 @@ export const getGameNumbers = ({ amount, maxNum, minNum }) => {
   return gameNumbers;
 };
 
+export const startGame = ({ amount, maxNum, minNum }) => {
+  updateSettings({ amount, maxNum, minNum });
+
+  return {
+    type: ACTIONS.START_GAME,
+    allNumbers: getAllNumbers({ maxNum, minNum }),
+    gameNumbers: getGameNumbers({ amount, maxNum, minNum })
+  };
+};
+
+export const showNextNumber = () => {
+  toggleAnswerVisibility();
+
+  return {
+    type: ACTIONS.SHOW_NEXT_QUESTION,
+  };
+};
+
 export const toggleAnswerVisibility = () => {
   return {
     type: ACTIONS.TOGGLE_ANSWER_VISIBILITY
   };
 };
 
-export const increaseCurrentQuestionIndex = () => {
+export const updateSettings = ({ amount, maxNum, minNum }) => {
   return {
-    type: ACTIONS.INCREASE_CURRENT_QUESTION_INDEX
-  };
-};
-
-export const updateInputMinNum = (minNumValue) => {
-  return {
-    type: ACTIONS.UPDATE_INPUT_MIN_NUM,
-    minNumValue,
+    type: ACTIONS.UPDATE_SETTINGS,
+    amount,
+    maxNum,
+    minNum
   };
 };
 
 export const updateInputMaxNum = (maxNumValue) => {
   return {
     type: ACTIONS.UPDATE_INPUT_MAX_NUM,
-    maxNumValue,
+    maxNumValue
   };
 };
 
-
+export const updateInputMinNum = (minNumValue) => {
+  return {
+    type: ACTIONS.UPDATE_INPUT_MIN_NUM,
+    minNumValue
+  };
+};

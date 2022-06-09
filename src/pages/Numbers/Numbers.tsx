@@ -4,15 +4,13 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
+  showNextNumber,
   startGame,
   toggleAnswerVisibility,
-  increaseCurrentQuestionIndex,
   updateInputMaxNum,
-  updateInputMinNum,
-  updateSettings
+  updateInputMinNum
 } from '../../store/numbers/numbers.actions';
 
-import { InputType } from '../../entities/Input';
 import { StateNumbers } from '../../entities/Numbers';
 
 import Button from '../../components/Button/Button';
@@ -24,23 +22,20 @@ export const Numbers = () => {
   const dispatch = useDispatch();
 
   const {
-    amount,
     allNumbers,
+    currentIdx,
     gameNumbers,
     isGameStarted,
     isAnswerHidden,
-    currentIdx,
-    currentAnswer,
-    settings,
-    minNumValue,
-    maxNumValue
+    maxlength,
+    settings
   } = useSelector((state: { numbers: StateNumbers }) => state.numbers);
+  const { amount, maxNum, minNum } = settings;
 
   const textData = {
     weight: 400,
     size: 10
   };
-
 
   const numberData = {
     weight: 700
@@ -52,7 +47,7 @@ export const Numbers = () => {
   };
 
   const btnPlayData = {
-    onClick: () => dispatch(startGame({ amount: amount, maxNum: maxNumValue, minNum: minNumValue }))
+    onClick: () => dispatch(startGame({ amount: +amount, maxNum: +maxNum, minNum: +minNum }))
   };
 
   const btnShowData = {
@@ -71,26 +66,24 @@ export const Numbers = () => {
   };
 
   const inputMinNum = {
-    maxLength: 4,
+    maxlength: maxlength,
     name: minName,
     placeholder: 'from 0 to 9999',
-    value: minNumValue.toString(),
-    onChange: (value: number) => dispatch(updateInputMinNum(value))
+    value: minNum.toString(),
+    onChange: (value: string) => dispatch(updateInputMinNum(value))
   };
 
   const inputMaxNum = {
-    maxLength: 4,
+    maxlength: maxlength,
     name: maxName,
+    pattern: '\\d*',
     placeholder: 'from 0 to 9999',
-    value: maxNumValue.toString(),
-    onChange: (value: number) => dispatch(updateInputMaxNum(value))
+    value: maxNum.toString(),
+    onChange: (value: string) => dispatch(updateInputMaxNum(value))
   };
 
   const btnNextData = {
-    onClick: () => {
-      dispatch(toggleAnswerVisibility());
-      dispatch(increaseCurrentQuestionIndex());
-    }
+    onClick: () => dispatch(showNextNumber())
   };
 
   return (
@@ -108,9 +101,7 @@ export const Numbers = () => {
             {isAnswerHidden ? (
               <Button {...btnShowData}>Show</Button>
             ) : (
-              <>
-                <Button {...btnNextData}>Next</Button>
-              </>
+              <Button {...btnNextData}>Next</Button>
             )}
           </div>
         </div>

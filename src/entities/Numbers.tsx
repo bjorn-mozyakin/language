@@ -1,17 +1,14 @@
 export type StateNumbers = {
   allNumbers: any;
-  amount: number,
-  gameNumbers: number[];
-  isGameStarted: false;
-  isAnswerHidden: true;
-  questions: number[];
-  currentIdx: number;
   currentAnswer: string;
-  minNumValue: number,
-  maxNumValue: number,
+  currentIdx: number;
+  gameNumbers: number[];
+  isAnswerHidden: true;
+  isGameStarted: false;
+  maxlength?: number;
   settings: {
-    minNum: number;
-    maxNum: number;
     amount: number;
+    maxNum: number;
+    minNum: number;
   };
 };

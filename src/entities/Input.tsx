@@ -12,14 +12,13 @@ export interface InputState {
   autocomplete?: string;
   autoFocus?: boolean;
   hint?: string;
+  maxlength?: number;
   name: string;
-  max?: number;
-  maxLength?: number;
-  min?: number;
+  pattern?: string;
   placeholder?: string;
   required?: boolean;
   type?: InputType;
   value?: string;
   withError?: boolean;
-  onChange?: (e: any) => void;
+  onChange?: (value: string) => void;
 }
