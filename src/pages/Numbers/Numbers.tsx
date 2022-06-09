@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   startGame,
   toggleAnswerVisibility,
-  increaseCurrentQuestionIndex
+  increaseCurrentQuestionIndex,
+  updateSettings
 } from '../../store/numbers/numbers.actions';
 
 import { StateNumbers } from '../../entities/Numbers';
@@ -15,10 +16,17 @@ import Text from '../../components/Text/Text';
 export const Numbers = () => {
   const dispatch = useDispatch();
 
-  const { allNumbers, isGameStarted, isAnswerHidden, questions, currentIdx, currentAnswer } =
-    useSelector((state: { numbers: StateNumbers }) => state.numbers);
+  const {
+    allNumbers,
+    gameNumbers,
+    isGameStarted,
+    isAnswerHidden,
+    currentIdx,
+    currentAnswer,
+    settings
+  } = useSelector((state: { numbers: StateNumbers }) => state.numbers);
 
-  const questoinData = {
+  const numberData = {
     weight: 700
   };
 
@@ -27,9 +35,7 @@ export const Numbers = () => {
   };
 
   const btnPlayData = {
-    onClick: () => {
-      dispatch(startGame());
-    }
+    onClick: () => dispatch(startGame({ amount: 10, maxNum: 99, minNum: 10 }))
   };
 
   const btnShowData = {
@@ -48,12 +54,12 @@ export const Numbers = () => {
       <h1>Numbers page</h1>
       {isGameStarted ? (
         <div>
-          <Text {...questoinData}>{questions[currentIdx]}</Text>
+          <Text {...numberData}>{gameNumbers[currentIdx]}</Text>
           {isAnswerHidden ? (
             <Button {...btnShowData}>Show</Button>
           ) : (
             <>
-              <Text {...answerData}>{allNumbers[questions[currentIdx]]}</Text>
+              <Text {...answerData}>{allNumbers[gameNumbers[currentIdx]]}</Text>
               <Button {...btnNextData}>Next</Button>
             </>
           )}

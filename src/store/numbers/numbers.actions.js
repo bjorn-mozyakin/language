@@ -1,17 +1,30 @@
 import { _0_9, _10_90, _100_1000 } from '../../rules/numbers/numbers';
+import { randomInteger } from '../../utils/numbers';
 import * as ACTIONS from './numbers.actions-consts';
 
-export const startGame = () => {
+export const updateSettings = ({ amount, maxNum, minNum }) => {
   return {
-    type: ACTIONS.START_GAME,
-    allNumbers: getAllNumbers()
+    type: ACTIONS.UPDATE_SETTINGS,
+    amount,
+    maxNum,
+    minNum
   };
 };
 
-export const getAllNumbers = () => {
+export const startGame = ({ amount, maxNum, minNum }) => {
+  updateSettings({ amount, maxNum, minNum });
+
+  return {
+    type: ACTIONS.START_GAME,
+    allNumbers: getAllNumbers({ maxNum, minNum }),
+    gameNumbers: getGameNumbers({ amount, maxNum, minNum })
+  };
+};
+
+export const getAllNumbers = ({ maxNum, minNum }) => {
   const allNumbers = {};
 
-  for (let i = 1; i <= 2000; i++) {
+  for (let i = minNum; i <= maxNum; i++) {
     let words = [];
     const digits = i.toString().split('').reverse();
 
@@ -38,6 +51,16 @@ export const getAllNumbers = () => {
   }
 
   return allNumbers;
+};
+
+export const getGameNumbers = ({ amount, maxNum, minNum }) => {
+  const gameNumbers = [];
+
+  for (let i = 0; i < amount; i++) {
+    gameNumbers.push(randomInteger(minNum, maxNum));
+  }
+
+  return gameNumbers;
 };
 
 export const toggleAnswerVisibility = () => {
