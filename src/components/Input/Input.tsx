@@ -1,6 +1,7 @@
 import './Input.scss';
 
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
 import { InputState, InputType } from '../../entities/Input';
 
@@ -14,10 +15,14 @@ const Input = ({
   withError = false,
   additionalClasses = [],
   autoFocus = false,
-  maxLength = '',
+  maxLength,
+  min,
+  max,
   hint = '',
   onChange
 }: InputState) => {
+  const dispatch = useDispatch();
+
   const classNames = ['input-area__input'].concat(additionalClasses).join(' ');
 
   return (
@@ -31,7 +36,9 @@ const Input = ({
         autoComplete={autocomplete}
         required={required}
         autoFocus={autoFocus}
-        {...(maxLength || '')}
+        maxLength={maxLength}
+        min={min}
+        max={max}
         onChange={
           onChange &&
           ((event) => {

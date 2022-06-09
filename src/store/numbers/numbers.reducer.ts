@@ -9,12 +9,15 @@ const initialState: StateNumbers = {
     amount: 10
   },
   allNumbers: null,
+  amount: 10,
   gameNumbers: [],
   isGameStarted: false,
   isAnswerHidden: true,
   questions: [2, 43, 142, 50, 7],
   currentIdx: 0,
-  currentAnswer: ''
+  currentAnswer: '',
+  minNumValue: 0,
+  maxNumValue: 99
 };
 
 export default (state = initialState, action: any) => {
@@ -53,6 +56,18 @@ export default (state = initialState, action: any) => {
       return {
         ...state,
         currentAnswer: action.currentAnswer
+      };
+
+    case ACTIONS.UPDATE_INPUT_MIN_NUM:
+      return {
+        ...state,
+        minNumValue: action.minNumValue
+      };
+
+    case ACTIONS.UPDATE_INPUT_MAX_NUM:
+      return {
+        ...state,
+        minNumValue: action.maxNumValue
       };
 
     default:

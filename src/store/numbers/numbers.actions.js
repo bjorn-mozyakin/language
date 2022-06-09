@@ -74,3 +74,19 @@ export const increaseCurrentQuestionIndex = () => {
     type: ACTIONS.INCREASE_CURRENT_QUESTION_INDEX
   };
 };
+
+export const updateInputMinNum = (minNumValue) => {
+  return {
+    type: ACTIONS.UPDATE_INPUT_MIN_NUM,
+    minNumValue,
+  };
+};
+
+export const updateInputMaxNum = (maxNumValue) => {
+  return {
+    type: ACTIONS.UPDATE_INPUT_MAX_NUM,
+    maxNumValue,
+  };
+};
+
+
