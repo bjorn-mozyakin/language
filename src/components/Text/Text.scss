@@ -1,0 +1,13 @@
+@import '../../scss/vars';
+
+.text {
+  color: $cBlack;
+
+  &_weight_400 {
+    font-weight: 400;
+  }
+
+  &_weight_700 {
+    font-weight: 700;
+  }
+}
