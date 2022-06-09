@@ -1,4 +1,4 @@
-import './PageVerb.scss';
+import './Verbs.scss';
 
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,7 +16,7 @@ import Select from '../../components/Select/Select';
 import Title from '../../components/Title/Title';
 import WordSet from '../../components/WordSet/WordSet';
 
-export const Page = () => {
+export const Verbs = () => {
   const verbs = useSelector((state: { verb: StateVerb }) => state.verb.verbs);
   const dispatch = useDispatch();
   const verb = useSelector((state: { verb: StateVerb }) => state.verb.verb);
@@ -69,4 +69,4 @@ export const Page = () => {
   );
 };
 
-export default Page;
+export default Verbs;
