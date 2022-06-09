@@ -10,4 +10,20 @@
   &_weight_700 {
     font-weight: 700;
   }
+
+  $sizes: 10 10px, 12 12px, 14 14px;
+
+  @each $name, $size in $sizes {
+    &_size_#{$name} {
+      font-size: $size;
+    }
+  }
+
+  &_visibility_true {
+    visibility: visible;
+  }
+
+  &_visibility_false {
+    visibility: hidden;
+  }
 }

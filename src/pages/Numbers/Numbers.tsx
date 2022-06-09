@@ -1,3 +1,5 @@
+import './Numbers.scss';
+
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -34,12 +36,19 @@ export const Numbers = () => {
     maxNumValue
   } = useSelector((state: { numbers: StateNumbers }) => state.numbers);
 
+  const textData = {
+    weight: 400,
+    size: 10
+  };
+
+
   const numberData = {
     weight: 700
   };
 
   const answerData = {
-    weight: 400
+    weight: 400,
+    visibility: !isAnswerHidden
   };
 
   const btnPlayData = {
@@ -88,19 +97,22 @@ export const Numbers = () => {
     <div className="page">
       <h1>Numbers page</h1>
       {isGameStarted ? (
-        <div>
-          <div>
-            {currentIdx + 1}/{amount}
+        <div className="numbers">
+          <div className="numbers__container">
+            <div className="numbers__one-of">
+              {currentIdx + 1}/{amount}
+            </div>
+            <Text {...textData}>How to say:</Text>
+            <Text {...numberData}>{gameNumbers[currentIdx]}</Text>
+            <Text {...answerData}>{allNumbers[gameNumbers[currentIdx]]}</Text>
+            {isAnswerHidden ? (
+              <Button {...btnShowData}>Show</Button>
+            ) : (
+              <>
+                <Button {...btnNextData}>Next</Button>
+              </>
+            )}
           </div>
-          <Text {...numberData}>{gameNumbers[currentIdx]}</Text>
-          {isAnswerHidden ? (
-            <Button {...btnShowData}>Show</Button>
-          ) : (
-            <>
-              <Text {...answerData}>{allNumbers[gameNumbers[currentIdx]]}</Text>
-              <Button {...btnNextData}>Next</Button>
-            </>
-          )}
         </div>
       ) : (
         <>
