@@ -17,6 +17,7 @@ export interface InputState {
   pattern?: string;
   placeholder?: string;
   required?: boolean;
+  size?: number;
   type?: InputType;
   value?: string;
   withError?: boolean;

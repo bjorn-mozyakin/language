@@ -14,6 +14,7 @@ const Input = ({
   pattern = '',
   placeholder = '',
   required = false,
+  size,
   type = InputType.TEXT,
   value = '',
   withError = false,
@@ -29,9 +30,10 @@ const Input = ({
         autoFocus={autoFocus}
         maxLength={maxlength}
         name={name}
-        {...pattern || ''}
+        {...(pattern || '')}
         placeholder={placeholder}
         required={required}
+        {...(size ? { size } : {})}
         type={type}
         value={value}
         onChange={

@@ -68,7 +68,7 @@ export const Numbers = () => {
   const inputMinNum = {
     maxlength: maxlength,
     name: minName,
-    placeholder: 'from 0 to 9999',
+    size: 4,
     value: minNum.toString(),
     onChange: (value: string) => dispatch(updateInputMinNum(value))
   };
@@ -76,8 +76,7 @@ export const Numbers = () => {
   const inputMaxNum = {
     maxlength: maxlength,
     name: maxName,
-    pattern: '\\d*',
-    placeholder: 'from 0 to 9999',
+    size: 4,
     value: maxNum.toString(),
     onChange: (value: string) => dispatch(updateInputMaxNum(value))
   };
