@@ -19,8 +19,7 @@ const initialState: StateNumbers = {
 
 export default (state = initialState, action: any) => {
   switch (action.type) {
-    case ACTIONS.SHOW_NEXT_QUESTION:
-      debugger
+    case ACTIONS.INCREASE_CURRENT_NUMBER_INDEX:
       return {
         ...state,
         currentIdx: ++state.currentIdx
@@ -35,7 +34,6 @@ export default (state = initialState, action: any) => {
       };
 
     case ACTIONS.TOGGLE_ANSWER_VISIBILITY:
-      debugger
       return {
         ...state,
         isAnswerHidden: !state.isAnswerHidden

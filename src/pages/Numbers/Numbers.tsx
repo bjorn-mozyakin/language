@@ -4,7 +4,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
-  showNextNumber,
+  increaseCurrentNumberIndex,
   startGame,
   toggleAnswerVisibility,
   updateInputMaxNum,
@@ -92,7 +92,10 @@ export const Numbers = () => {
   };
 
   const btnNextData = {
-    onClick: () => dispatch(showNextNumber())
+    onClick: () => {
+      dispatch(toggleAnswerVisibility());
+      dispatch(increaseCurrentNumberIndex());
+    }
   };
 
   return (

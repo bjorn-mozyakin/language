@@ -54,17 +54,13 @@ export const startGame = ({ amount, maxNum, minNum }) => {
   };
 };
 
-export const showNextNumber = () => {
-  debugger;
-  toggleAnswerVisibility();
-
+export const increaseCurrentNumberIndex = () => {
   return {
-    type: ACTIONS.SHOW_NEXT_QUESTION
+    type: ACTIONS.INCREASE_CURRENT_NUMBER_INDEX
   };
 };
 
 export const toggleAnswerVisibility = () => {
-  debugger
   return {
     type: ACTIONS.TOGGLE_ANSWER_VISIBILITY
   };
