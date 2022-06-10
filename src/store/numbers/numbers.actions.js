@@ -10,7 +10,7 @@ export const getAllNumbers = ({ maxNum, minNum }) => {
     const digits = i.toString().split('').reverse();
 
     if (digits.length <= 3) {
-      if (+digits[0]) {
+      if (+digits[0] || digits.length === 1) {
         words.push(_0_9[digits[0]]);
       }
       if (+digits[1]) {
