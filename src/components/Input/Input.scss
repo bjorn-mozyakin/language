@@ -1,8 +1,15 @@
 @import '../../scss/vars';
 
 .input-area__input {
-  height: 40px;
   padding: 0 $p8;
   border-radius: 6px;
   border: 1px solid $cBlack;
+
+  &_size_big {
+    height: 40px;
+  }
+
+  &_size_small {
+    height: 24px;
+  }
 }

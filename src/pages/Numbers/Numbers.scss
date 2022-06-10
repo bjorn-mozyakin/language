@@ -19,6 +19,20 @@
     border-radius: 6px;
   }
 
+  &__controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__settings {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $bmu * 3;
+  }
+
   &__one-of {
   }
 }

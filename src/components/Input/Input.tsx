@@ -15,12 +15,15 @@ const Input = ({
   placeholder = '',
   required = false,
   size,
+  tmpl = 'big',
   type = InputType.TEXT,
   value = '',
   withError = false,
   onChange
 }: InputState) => {
-  const classNames = ['input-area__input'].concat(additionalClasses).join(' ');
+  const classNames = ['input-area__input', `input-area__input_size_${tmpl}`]
+    .concat(additionalClasses)
+    .join(' ');
 
   return (
     <div className="input-area">

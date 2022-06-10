@@ -1,0 +1,15 @@
+@import '../../scss/vars';
+
+.label {
+  display: flex;
+
+  &_direction_row {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &_direction_column {
+    flex-direction: column;
+    align-items: center;
+  }
+}

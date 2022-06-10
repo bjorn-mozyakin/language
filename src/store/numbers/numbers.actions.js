@@ -2,7 +2,6 @@ import { _0_9, _10_90, _100_1000 } from '../../rules/numbers/numbers';
 import { randomInteger } from '../../utils/numbers';
 import * as ACTIONS from './numbers.actions-consts';
 
-
 export const getAllNumbers = ({ maxNum, minNum }) => {
   const allNumbers = {};
 
@@ -56,14 +55,16 @@ export const startGame = ({ amount, maxNum, minNum }) => {
 };
 
 export const showNextNumber = () => {
+  debugger;
   toggleAnswerVisibility();
 
   return {
-    type: ACTIONS.SHOW_NEXT_QUESTION,
+    type: ACTIONS.SHOW_NEXT_QUESTION
   };
 };
 
 export const toggleAnswerVisibility = () => {
+  debugger
   return {
     type: ACTIONS.TOGGLE_ANSWER_VISIBILITY
   };

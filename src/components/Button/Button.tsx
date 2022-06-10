@@ -10,12 +10,13 @@ export const Button = ({
   children,
   title = null,
   type = ButtonType.BUTTON,
+  tmpl = 'big',
   additionalClasses = [],
   dataAttributes = null,
   isLoading = false,
   onClick
 }: BtnType) => {
-  const classNames = ['button', isLoading ? 'btn-flat_loading' : '']
+  const classNames = ['button', `button_size_${tmpl}`, isLoading ? 'btn-flat_loading' : '']
     .concat(additionalClasses)
     .join(' ');
 

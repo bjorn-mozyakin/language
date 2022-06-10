@@ -11,6 +11,7 @@ export interface BtnType {
   dataAttributes?: any;
   isLoading?: boolean;
   title?: string | null;
+  tmpl?: string;
   type?: ButtonType;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }

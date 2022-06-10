@@ -6,10 +6,10 @@ type Props = {
   children: React.ReactNode;
   size?: number;
   visibility?: boolean;
-  weight: number;
+  weight?: number;
 };
 
-export const Text = ({ children, size = 14, weight, visibility = true }: Props) => {
+export const Text = ({ children, size = 14, weight = 400, visibility = true }: Props) => {
   return (
     <div className={`text text_weight_${weight} text_visibility_${visibility} text_size_${size}`}>
       {children}

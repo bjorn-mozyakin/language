@@ -31,6 +31,47 @@ export const Numbers = () => {
     settings
   } = useSelector((state: { numbers: StateNumbers }) => state.numbers);
   const { amount, maxNum, minNum } = settings;
+  const minName = 'minNum';
+  const maxName = 'maxNum';
+
+  const settingsTitleData = {
+    size: 10
+  };
+
+  const labelMinNum = {
+    name: minName,
+    direction: 'row'
+  };
+
+  const inputMinNum = {
+    additionalClasses: ['outdent-left-8'],
+    maxlength: maxlength,
+    name: minName,
+    size: 4,
+    tmpl: 'small',
+    value: minNum.toString(),
+    onChange: (value: string) => dispatch(updateInputMinNum(value))
+  };
+
+  const labelMaxNum = {
+    additionalClasses: ['outdent-left-24'],
+    name: maxName,
+    direction: 'row'
+  };
+
+  const inputMaxNum = {
+    additionalClasses: ['outdent-left-8'],
+    maxlength: maxlength,
+    name: maxName,
+    size: 4,
+    tmpl: 'small',
+    value: maxNum.toString(),
+    onChange: (value: string) => dispatch(updateInputMaxNum(value))
+  };
+
+  const btnPlayData = {
+    onClick: () => dispatch(startGame({ amount: +amount, maxNum: +maxNum, minNum: +minNum }))
+  };
 
   const textData = {
     weight: 400,
@@ -46,39 +87,8 @@ export const Numbers = () => {
     visibility: !isAnswerHidden
   };
 
-  const btnPlayData = {
-    onClick: () => dispatch(startGame({ amount: +amount, maxNum: +maxNum, minNum: +minNum }))
-  };
-
   const btnShowData = {
     onClick: () => dispatch(toggleAnswerVisibility())
-  };
-
-  const minName = 'minNum';
-  const maxName = 'maxNum';
-
-  const labelMinNum = {
-    name: minName
-  };
-
-  const labelMaxNum = {
-    name: maxName
-  };
-
-  const inputMinNum = {
-    maxlength: maxlength,
-    name: minName,
-    size: 4,
-    value: minNum.toString(),
-    onChange: (value: string) => dispatch(updateInputMinNum(value))
-  };
-
-  const inputMaxNum = {
-    maxlength: maxlength,
-    name: maxName,
-    size: 4,
-    value: maxNum.toString(),
-    onChange: (value: string) => dispatch(updateInputMaxNum(value))
   };
 
   const btnNextData = {
@@ -105,19 +115,20 @@ export const Numbers = () => {
           </div>
         </div>
       ) : (
-        <>
-          <div className="settings">
+        <div className="numbers__controls">
+          <Text {...settingsTitleData}>Practice numbers:</Text>
+          <div className="numbers__settings">
             <Label {...labelMinNum}>
-              От
+              From
               <Input {...inputMinNum} />
             </Label>
             <Label {...labelMaxNum}>
-              До
+              To
               <Input {...inputMaxNum} />
             </Label>
           </div>
           <Button {...btnPlayData}>Play</Button>
-        </>
+        </div>
       )}
     </div>
   );
