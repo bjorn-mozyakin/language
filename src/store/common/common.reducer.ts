@@ -6,11 +6,17 @@ import { State } from '../../entities/State';
 import * as ACTIONS from './common.actions-consts';
 
 const initialState: State = {
-  language: Language.EN
+  language: Language.FR
 };
 
 const reducerCommon = (state = initialState, action: AnyAction) => {
   switch (action.type) {
+    case ACTIONS.SWITCH_LANGUAGE:
+      return {
+        ...state,
+        language: action.language
+      };
+
     default:
       return state;
   }

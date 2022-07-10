@@ -231,7 +231,37 @@ const _100_1000 = {
   }
 };
 
-const _80_99 = {
+const _70_99 = {
+  70: {
+    fr: 'soixante-dix'
+  },
+  71: {
+    fr: 'soixante-onze'
+  },
+  72: {
+    fr: 'soixante-douze'
+  },
+  73: {
+    fr: 'soixante-treize'
+  },
+  74: {
+    fr: 'soixante-quatorze'
+  },
+  75: {
+    fr: 'soixante-quinze'
+  },
+  76: {
+    fr: 'soixante-seize'
+  },
+  77: {
+    fr: 'soixante-dix-sept'
+  },
+  78: {
+    fr: 'soixante-dix-huit'
+  },
+  79: {
+    fr: 'soixante-dix-neuf'
+  },
   80: {
     fr: 'quatre-vingts'
   },
@@ -267,4 +297,4 @@ const _80_99 = {
   }
 };
 
-export { _0_9, _10_99, _100_1000, _10_19, _80_99 };
+export { _0_9, _10_99, _100_1000, _10_19, _70_99 };

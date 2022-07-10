@@ -11,6 +11,7 @@ import {
   updateInputMinNum
 } from '../../store/numbers/numbers.actions';
 
+import { StateCommon } from '../../entities/Common';
 import { StateNumbers } from '../../entities/Numbers';
 
 import Button from '../../components/Button/Button';
@@ -20,6 +21,8 @@ import Text from '../../components/Text/Text';
 
 export const Numbers = () => {
   const dispatch = useDispatch();
+
+  const { language } = useSelector((state: { common: StateCommon }) => state.common);
 
   const {
     allNumbers,
@@ -70,7 +73,15 @@ export const Numbers = () => {
   };
 
   const btnPlayData = {
-    onClick: () => dispatch(startGame({ amount: +amount, maxNum: +maxNum, minNum: +minNum }))
+    onClick: () =>
+      dispatch(
+        startGame({
+          amount: +amount,
+          maxNum: +maxNum,
+          minNum: +minNum,
+          language: language
+        })
+      )
   };
 
   const textData = {

@@ -1,10 +1,9 @@
-import { _0_9, _10_19, _10_99, _80_99, _100_1000 } from '../../rules/numbers/numbers';
+import { _0_9, _10_19, _10_99, _70_99, _100_1000 } from '../../rules/numbers/numbers';
 import { randomInteger } from '../../utils/numbers';
 import * as ACTIONS from './numbers.actions-consts';
 
-export const getAllNumbers = ({ maxNum, minNum }) => {
+export const getAllNumbers = ({ maxNum, minNum, language }) => {
   const allNumbers = {};
-  const learnLanguage = 'ru';
 
   for (let i = minNum; i <= maxNum; i++) {
     let words = [];
@@ -12,18 +11,18 @@ export const getAllNumbers = ({ maxNum, minNum }) => {
 
     if (digits.length <= 3) {
       if (+digits[0] || digits.length === 1) {
-        words.push(_0_9[digits[0]][learnLanguage]);
+        words.push(_0_9[digits[0]][language]);
       }
       if (+digits[1]) {
-        words.push(_10_99[digits[1] + '0'][learnLanguage]);
+        words.push(_10_99[digits[1] + '0'][language]);
       }
       if (+digits[2]) {
-        words.push(_100_1000[100][learnLanguage]);
-        words.push(_0_9[digits[2]][learnLanguage]);
+        words.push(_100_1000[100][language]);
+        words.push(_0_9[digits[2]][language]);
       }
       if (+digits[3]) {
-        words.push(_100_1000[1000][learnLanguage]);
-        words.push(_0_9[digits[3]][learnLanguage]);
+        words.push(_100_1000[1000][language]);
+        words.push(_0_9[digits[3]][language]);
       }
     } else {
       console.error('Не поддерживаемый формат числа');
@@ -32,20 +31,29 @@ export const getAllNumbers = ({ maxNum, minNum }) => {
     allNumbers[i] = words.reverse().join(' ');
   }
 
-  return handleExceptions(allNumbers, learnLanguage);
+  return handleExceptions(allNumbers, language);
 };
 
-const handleExceptions = (allNumbers, learnLanguage) => {
-  if (['en', 'fr', 'ru'].includes(learnLanguage)) {
+const handleExceptions = (allNumbers, language) => {
+  if (['en', 'fr', 'ru'].includes(language)) {
     for (let j = 11; j < 20; j++) {
-      allNumbers[j] = _10_19[j][learnLanguage];
+      if (allNumbers[j]) {
+        allNumbers[j] = _10_19[j][language];
+      }
     }
   }
 
-  if (['fr'].includes(learnLanguage)) {
-    allNumbers[80] = _80_99[80][learnLanguage];
+  if (['fr'].includes(language)) {
+    allNumbers[80] = _70_99[80][language];
+    for (let j = 70; j < 79; j++) {
+      if (allNumbers[j]) {
+        allNumbers[j] = _70_99[j][language];
+      }
+    }
     for (let j = 90; j < 99; j++) {
-      allNumbers[j] = _80_99[j][learnLanguage];
+      if (allNumbers[j]) {
+        allNumbers[j] = _70_99[j][language];
+      }
     }
   }
 
@@ -62,12 +70,12 @@ export const getGameNumbers = ({ amount, maxNum, minNum }) => {
   return gameNumbers;
 };
 
-export const startGame = ({ amount, maxNum, minNum }) => {
+export const startGame = ({ amount, maxNum, minNum, language }) => {
   updateSettings({ amount, maxNum, minNum });
 
   return {
     type: ACTIONS.START_GAME,
-    allNumbers: getAllNumbers({ maxNum, minNum }),
+    allNumbers: getAllNumbers({ maxNum, minNum, language }),
     gameNumbers: getGameNumbers({ amount, maxNum, minNum })
   };
 };
