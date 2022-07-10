@@ -1,9 +1,10 @@
-import { _0_9, _10_90, _100_1000 } from '../../rules/numbers/numbers';
+import { _0_9, _10_19, _10_99, _80_99, _100_1000 } from '../../rules/numbers/numbers';
 import { randomInteger } from '../../utils/numbers';
 import * as ACTIONS from './numbers.actions-consts';
 
 export const getAllNumbers = ({ maxNum, minNum }) => {
   const allNumbers = {};
+  const learnLanguage = 'ru';
 
   for (let i = minNum; i <= maxNum; i++) {
     let words = [];
@@ -11,24 +12,41 @@ export const getAllNumbers = ({ maxNum, minNum }) => {
 
     if (digits.length <= 3) {
       if (+digits[0] || digits.length === 1) {
-        words.push(_0_9[digits[0]]);
+        words.push(_0_9[digits[0]][learnLanguage]);
       }
       if (+digits[1]) {
-        words.push(_10_90[digits[1] + '0']);
+        words.push(_10_99[digits[1] + '0'][learnLanguage]);
       }
       if (+digits[2]) {
-        words.push(_100_1000[100]);
-        words.push(_0_9[digits[2]]);
+        words.push(_100_1000[100][learnLanguage]);
+        words.push(_0_9[digits[2]][learnLanguage]);
       }
       if (+digits[3]) {
-        words.push(_100_1000[1000]);
-        words.push(_0_9[digits[3]]);
+        words.push(_100_1000[1000][learnLanguage]);
+        words.push(_0_9[digits[3]][learnLanguage]);
       }
     } else {
       console.error('Не поддерживаемый формат числа');
     }
 
     allNumbers[i] = words.reverse().join(' ');
+  }
+
+  return handleExceptions(allNumbers, learnLanguage);
+};
+
+const handleExceptions = (allNumbers, learnLanguage) => {
+  if (['en', 'fr', 'ru'].includes(learnLanguage)) {
+    for (let j = 11; j < 20; j++) {
+      allNumbers[j] = _10_19[j][learnLanguage];
+    }
+  }
+
+  if (['fr'].includes(learnLanguage)) {
+    allNumbers[80] = _80_99[80][learnLanguage];
+    for (let j = 90; j < 99; j++) {
+      allNumbers[j] = _80_99[j][learnLanguage];
+    }
   }
 
   return allNumbers;
